@@ -3,7 +3,7 @@
 ----
 Project Description
 ----
-This is a six-week project from the entrepreneurship class from Master's in Data Science at University of San Francisco. I and other seven students are the founding members of this startup we built from scratch, and we presented our idea and the initial product (web-based full stack machine learning application) to venture captalists at the end of the sixth week.
+This is a six-week project from the entrepreneurship class from Master's in Data Science at University of San Francisco. I and other seven students are the founding members of this startup we built from scratch, and we presented our idea and the initial product (web-based full stack machine learning application) to  venture capitalists at the end of the sixth week.
 
 Our startup is called Deception Perception.
 
