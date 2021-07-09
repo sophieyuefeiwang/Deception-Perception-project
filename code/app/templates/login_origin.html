@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+​
+{% block body -%}
+<h1>Login</h1>
+​
+{% block content %}
+<div class="container">
+    {% include 'flash.html' %}
+    <form method="POST">
+        {{ form.csrf_token }}
+        {{ form.username.label}} {{form.username()}} <br/>
+        {{ form.password.label}} {{form.password()}}<br/>
+        {{ form.submit()}}
+​
+    </form>
+</br>
+</div> <!-- /container -->
+{% endblock %}
+​
+{%- endblock body %}

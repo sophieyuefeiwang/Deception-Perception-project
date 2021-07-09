@@ -1,0 +1,163 @@
+{% include 'header.html'%}
+
+{% include 'navbar.html'%}
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3KMFRQR5M"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+	
+		  gtag('config', 'G-W3KMFRQR5M');
+		</script>
+		<title>Prediction Page</title>
+
+		<br>
+		<br>
+		<br>
+		<div style="width:800px; margin:0 auto;">
+        <div style="width: 1300px;padding: 70px;">
+		<h1 style="color:#fac13a;"><b>Enter a sentence longer than 5 words</b>
+		</div>
+	</h1>
+    
+	<div class="container" onclick="gtag('event','click',{'event_category':'predict_button','event_label':'predict',value:10})">
+		<div class="content-section">
+		<form method="POST">
+			<fieldset class="form-group">
+			{{ form.csrf_token }}
+			{{ form.statement.label}} {{form.statement()}} <br/>
+		</fieldset>
+		<div class="form-group login-button">
+			{{ form.submit()}}
+		</div>
+	
+		</form>
+	</div>
+</div>
+</div>
+
+<head>
+	<title>Google Charts Tutorial</title>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.js' rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+	</script>
+	<script type = "text/javascript">
+	   google.charts.load('current', {packages: ['corechart']});     
+	</script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style='background-color:#20243C;'>
+		<div class="container">
+			<a class="navbar-brand" href="/#page-top">Deception Perception</a>
+				<!--
+				<img src="assets/img/navbar-logo.svg" alt="..." />
+				-->
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				Menu
+				<i class="fas fa-bars ms-1"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+					<li class="nav-item"><a class="nav-link" href="/#about" onclick="gtag('event','click',{'event_category':'nav_button','event_label':'nav_about',value:1})">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="/#team" onclick="gtag('event','click',{'event_category':'nav_button','event_label':'nav_team',value:1})">Team</a></li>
+					<li class="nav-item"><a class="nav-link" href="/login" onclick="gtag('event','click',{'event_category':'nav_button','event_label':'nav_login',value:1})">Login</a></li>
+					<li class="nav-item"><a class="nav-link" href="/logout" onclick="gtag('event','click',{'event_category':'nav_button','event_label':'nav_logout',value:1})">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" href="/register" onclick="gtag('event','click',{'event_category':'nav_button','event_label':'nav_register',value:1})">Sign Up</a></li>
+					<li class="nav-item"><a class="nav-link" href="/plotly" onclick="gtag('event','click',{'event_category':'nav_button','event_label':'nav_sources',value:1})">Sources</a></li>
+				</ul>
+			</div>
+		</div>
+	  </nav>
+
+
+
+<!--progress bar-->
+<div style="margin: 70px;padding: 70px;">
+	{% if soft_preds is defined %}
+	
+     <h1  style="color:#fac13a;"> {{veracity}}</h1>
+	 <br>
+	 <br>
+	 <br>
+	 <br>
+
+    <h2 style="color:#fac13a"> Model Confidence and Reasoning Analysis: </h2>
+	<p style='color:white;'>Red and blue colored progress bar below denotes what our fine-tuned BERT model thinks about the likelihood of a given sentence being deceptive or truthful respectively.</p>
+    <br>
+	<div class="progress">
+        <!-- {% set prediction = "%.0f"| format(soft_preds[0].data|float*100)  %} -->
+		<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" aria-valuenow="{{ '%.0f'| format(soft_preds[0].data|float*100)}}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ '%.0f'| format(soft_preds[0].data|float*100) }}%;">
+		{{ '%.0f'| format(soft_preds[0].data|float*100)}} % probability being false 
+		</div>
+
+		<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" aria-valuenow="{{ '%.0f'| format(soft_preds[1].data|float*100)}}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ '%.0f'| format(soft_preds[1].data|float*100) }}%;">
+			{{ '%.0f'| format(soft_preds[1].data|float*100)}} % probability being true
+			</div>	
+	</div>
+	<br>
+	<br>
+	<p style='color:white;'>
+		Vertical bar plot below shows the impact of adding the corresponding word to the whole sentence’s deceptive/truthfulness. Ex; dark colored bar shows that, adding the corresponding word makes the sentence x% more likely to be true and vice versa for the light colored bar.
+	</p>
+	{% endif %}
+
+</div>
+
+<!--google vizulization-->
+	<div id = "container" style = "width: 800px; height: 800px; margin: 10px auto;">
+	</div>
+	<script language = "JavaScript">
+	   function drawChart() {
+		  // Define the chart to be drawn.
+		  var word1  = '{{word1}}';
+		  var proba1 = {{proba1}};
+		  var word2  = '{{word2}}';
+		  var proba2 = {{proba2}};
+		  var word3  = '{{word3}}';
+		  var proba3 = {{proba3}};
+		  var word4  = '{{word4}}';
+		  var proba4 = {{proba4}};
+		  var word5  = '{{word5}}';
+		  var proba5 = {{proba5}};
+		  var word6  = '{{word6}}';
+		  var proba6 = {{proba6}};
+
+		  var data = google.visualization.arrayToDataTable([
+			 ['Unigram', 'Percent', { role: 'style' }],
+			 // ['blue', .1],
+			 [word1,  proba1, '#1c1e30'],
+			 [word2,  proba2, '#1c1e30'],
+			 [word3,  proba3, '#1c1e30'],
+			 [word4,  proba4, '#fac13a'],
+			 [word5,  proba5, '#fac13a'],
+			 [word6,  proba6, '#fac13a']
+		  ]);
+
+		  var options = {
+				title: 'Top 3 Deceptive and Truthful Words',
+				titleTextStyle: {
+//							color: '#cc00cc',    // any HTML string color ('red', '#cc00cc')
+//							fontName: 'Times New Roman', // i.e. 'Times New Roman'
+							fontSize: 28, // 12, 18 whatever you want (don't specify px)
+//							bold: True,    // true or false
+//							italic: False   // true of false
+				},
+				backgroundColor: '#E4E4E4',
+				hAxis: {textPosition: 'none', gridlines: {color: 'transparent'}},
+				vAxis: {gridlines: {color: 'transparent'}, textStyle: {fontSize:15, bold: true}},
+				legend: {position: 'none'},
+		  };
+
+		  // Instantiate and draw the chart.
+		  var chart = new google.visualization.BarChart(document.getElementById('container'));
+		  chart.draw(data, options);
+	   }
+	   google.charts.setOnLoadCallback(drawChart);
+	</script>
+ </body>

@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Generated Code Documentation &#8212; Deception Perception v0 documentation</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="My Code Tutorial" href="tutorial.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="index.html">Deception Perception v0 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="tutorial.html" title="My Code Tutorial"
+             accesskey="P">previous</a> |
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-app.model">
+<span id="auto-generated-code-documentation"></span><h1>Auto Generated Code Documentation<a class="headerlink" href="#module-app.model" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="app.model.load_model">
+<code class="sig-prename descclassname">app.model.</code><code class="sig-name descname">load_model</code><span class="sig-paren">(</span><em class="sig-param">model_directory=None</em>, <em class="sig-param">model=&lt;class 'transformers.models.distilbert.modeling_distilbert.DistilBertForSequenceClassification'&gt;</em>, <em class="sig-param">tokenizer=&lt;class 'transformers.models.distilbert.tokenization_distilbert_fast.DistilBertTokenizerFast'&gt;</em>, <em class="sig-param">tokenizer_class='distilbert-base-uncased'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/model.html#load_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.model.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to load a pretrained hugging face model.
+Returns a model and tokenizer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="app.model.predict_statement">
+<code class="sig-prename descclassname">app.model.</code><code class="sig-name descname">predict_statement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sentence</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">model</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">tokenizer</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/model.html#predict_statement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.model.predict_statement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to get predictions from the inputted model and tokenizer
+Returns soft and hard predictions from a SINGLE sentence</p>
+</dd></dl>
+
+<span class="target" id="module-app.boto3_client"></span><dl class="py function">
+<dt id="app.boto3_client.download_from_s3">
+<code class="sig-prename descclassname">app.boto3_client.</code><code class="sig-name descname">download_from_s3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span></em>, <em class="sig-param"><span class="n">bucket</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">file_download</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">save_directory</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/app/boto3_client.html#download_from_s3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.boto3_client.download_from_s3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download a file from S3</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="app.boto3_client.download_model_s3">
+<code class="sig-prename descclassname">app.boto3_client.</code><code class="sig-name descname">download_model_s3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">save_directory</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/app/boto3_client.html#download_model_s3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.boto3_client.download_model_s3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads all the model files from S3</p>
+</dd></dl>
+
+<span class="target" id="module-0"></span><dl class="py function">
+<dt id="id0">
+<code class="sig-prename descclassname">app.boto3_client.</code><code class="sig-name descname">download_from_s3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span></em>, <em class="sig-param"><span class="n">bucket</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">file_download</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">save_directory</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/app/boto3_client.html#download_from_s3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download a file from S3</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="id1">
+<code class="sig-prename descclassname">app.boto3_client.</code><code class="sig-name descname">download_model_s3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">save_directory</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/app/boto3_client.html#download_model_s3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads all the model files from S3</p>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">My Code Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Auto Generated Code Documentation</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="tutorial.html" title="My Code Tutorial"
+              >previous</a> |
+            <a href="py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="_sources/code.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Berkay Canogullari, Flora Chen, Aneri Dand, Eriko Funasato, Victor Palacios, Mauro Napoli, Sophie Wang, Ricky Zhang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

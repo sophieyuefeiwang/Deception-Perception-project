@@ -1,0 +1,11 @@
+version: "3"
+services:
+  web:
+    build:
+      context: code
+      dockerfile: Dockerfile
+    ports:
+      - "80:5000"
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}

@@ -1,0 +1,50 @@
+    <html>
+        <head>
+           <title>Google Charts Tutorial</title>
+           <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+           </script>
+           <script type = "text/javascript">
+              google.charts.load('current', {packages: ['corechart']});     
+           </script>
+        </head>
+
+        <body>
+           <div id = "container" style = "width: 800px; height: 800px; margin: 100px auto;">
+           </div>
+           <script language = "JavaScript">
+              function drawChart() {
+                 // Define the chart to be drawn.
+                 var word1  = '{{word1}}';
+                 var proba1 = {{proba1}};
+                 var word2  = '{{word2}}';
+                 var proba2 = {{proba2}};
+                 var word3  = '{{word3}}';
+                 var proba3 = {{proba3}};
+                 var word4  = '{{word4}}';
+                 var proba4 = {{proba4}};
+                 var word5  = '{{word5}}';
+                 var proba5 = {{proba5}};
+                 var word6  = '{{word6}}';
+                 var proba6 = {{proba6}};
+
+                 var data = google.visualization.arrayToDataTable([
+                    ['Unigram', 'Percent'],
+                    // ['blue', .1],
+                    [word1,  proba1],
+                    [word2,  proba2],
+                    [word3,  proba3],
+                    [word4,  proba4],
+                    [word5,  proba5],
+                    [word6,  proba6]
+                 ]);
+     
+                 var options = {title: 'Top 3 Deceptive and Truthful Words'}; 
+     
+                 // Instantiate and draw the chart.
+                 var chart = new google.visualization.BarChart(document.getElementById('container'));
+                 chart.draw(data, options);
+              }
+              google.charts.setOnLoadCallback(drawChart);
+           </script>
+        </body>
+     </html>

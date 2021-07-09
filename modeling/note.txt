@@ -1,0 +1,1 @@
+pytorch_model.bin file has not been push to this folder yet. Pytorch_model.bin contains the saved trained model, this file was sent in slack channel

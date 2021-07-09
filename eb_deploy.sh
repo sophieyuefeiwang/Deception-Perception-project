@@ -1,0 +1,2 @@
+eb init group-06-deceptionperception-app --region us-west-2 --platform Docker
+eb create group-06-deceptionperception-env --verbose -i t2.xlarge --envvars AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --envvars AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY

@@ -1,0 +1,31 @@
+{% include 'header.html'%}
+
+<body>
+    {% include 'navbar.html'%}
+    <div class="container login-container">
+        {% include 'flash.html' %}
+        <div class="content-section">
+            <form method="POST", action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <div class="username">
+                    {{ form.csrf_token }}
+                    {{ form.username.label}}
+                    <br>
+                    {{form.username()}}
+                    </div>
+                    <br>
+                    <div class="password">
+                    {{ form.password.label}} 
+                    <br>
+                    {{form.password()}}
+                    </div>                   
+                    <br>
+                </fieldset>
+                <div class="login-button" onclick="gtag('event','click',{'event_category':'login/signup','event_label':'login_submit',value:1})">
+                {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
